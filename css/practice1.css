@@ -1,0 +1,16 @@
+.add-bag {
+  font-size: 16px;
+  border: none;
+  background-color: #a7cfa7;
+  border-radius: 15px;
+  padding: 7px 20px;
+  margin-right: 10px;
+}
+
+.wishlist {
+  border: 2px solid black;
+  font-size: 16px;
+  border-radius: 12px;
+  padding: 7px 40px;
+  background-color: white;
+}
