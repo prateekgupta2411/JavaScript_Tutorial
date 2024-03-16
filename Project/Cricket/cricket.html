@@ -12,7 +12,7 @@
   <button id="stumpButton">Stump</button>
 
   <script>
-    document.getElementById('batButton').onclick = function () {
+    function handleButtonClick(userChoice) {
       let randomValue = Math.random() * 3;
       let computerChoice;
       if (randomValue >= 0 && randomValue < 1) {
@@ -24,58 +24,28 @@
       }
 
       let resultMsg;
-      if (computerChoice === 'Ball') {
-        resultMsg = 'User Won';
-      } else if (computerChoice === 'Bat') {
+      if (computerChoice === userChoice) {
         resultMsg = `It's a Tie`;
-      } else if (computerChoice === 'Stump') {
+      } else if ((computerChoice === 'Bat' && userChoice === 'Ball') ||
+        (computerChoice === 'Ball' && userChoice === 'Stump') ||
+        (computerChoice === 'Stump' && userChoice === 'Bat')) {
+        resultMsg = 'User Won';
+      } else {
         resultMsg = 'Computer has Won';
       }
-      alert(`You have chosen bat. Computer chosen is ${computerChoice} and ${resultMsg}`);
+      alert(`You have chosen ${userChoice}. Computer chosen is ${computerChoice} and ${resultMsg}`);
+    }
+
+    document.getElementById('batButton').onclick = function () {
+      handleButtonClick('Bat');
     };
 
     document.getElementById('ballButton').onclick = function () {
-      let randomValue = Math.random() * 3;
-      let computerChoice;
-      if (randomValue >= 0 && randomValue < 1) {
-        computerChoice = 'Bat';
-      } else if (randomValue >= 1 && randomValue < 2) {
-        computerChoice = 'Ball';
-      } else {
-        computerChoice = 'Stump';
-      }
-
-      let resultMsg;
-      if (computerChoice === 'Ball') {
-        resultMsg = `It's a Tie`;
-      } else if (computerChoice === 'Bat') {
-        resultMsg = 'Computer has Won';
-      } else if (computerChoice === 'Stump') {
-        resultMsg = 'User Won';
-      }
-      alert(`You have chosen Ball. Computer chosen is ${computerChoice} and ${resultMsg}`);
+      handleButtonClick('Ball');
     };
 
     document.getElementById('stumpButton').onclick = function () {
-      let randomValue = Math.random() * 3;
-      let computerChoice;
-      if (randomValue >= 0 && randomValue < 1) {
-        computerChoice = 'Bat';
-      } else if (randomValue >= 1 && randomValue < 2) {
-        computerChoice = 'Ball';
-      } else {
-        computerChoice = 'Stump';
-      }
-
-      let resultMsg;
-      if (computerChoice === 'Ball') {
-        resultMsg = 'Computer has Won';
-      } else if (computerChoice === 'Bat') {
-        resultMsg = 'User Won';
-      } else if (computerChoice === 'Stump') {
-        resultMsg = `It's a Tie`;
-      }
-      alert(`You have chosen Stump. Computer chosen is ${computerChoice} and ${resultMsg}`);
+      handleButtonClick('Stump');
     };
   </script>
 </body>
