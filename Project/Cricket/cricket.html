@@ -10,8 +10,33 @@
   <button id="batButton">Bat</button>
   <button id="ballButton">Ball</button>
   <button id="stumpButton">Stump</button>
+  <div id="score">
+    <h2>Score:</h2>
+    <p>Wins: <span id="winCount">0</span></p>
+    <p>Losses: <span id="lostCount">0</span></p>
+    <p>Ties: <span id="tieCount">0</span></p>
+  </div>
 
   <script>
+    let score = {
+      win: 0,
+      lost: 0,
+      tie: 0,
+    };
+
+    function updateScore(result) {
+      if (result === 'User Won') {
+        score.win++;
+        document.getElementById('winCount').textContent = score.win;
+      } else if (result === 'Computer has Won') {
+        score.lost++;
+        document.getElementById('lostCount').textContent = score.lost;
+      } else {
+        score.tie++;
+        document.getElementById('tieCount').textContent = score.tie;
+      }
+    }
+
     function handleButtonClick(userChoice) {
       let randomValue = Math.random() * 3;
       let computerChoice;
@@ -33,6 +58,9 @@
       } else {
         resultMsg = 'Computer has Won';
       }
+
+      updateScore(resultMsg);
+
       alert(`You have chosen ${userChoice}. Computer chosen is ${computerChoice} and ${resultMsg}`);
     }
 
