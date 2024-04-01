@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Exercise of Object</title>
+</head>
+
+<body>
+  <script>
+    let prod = {
+      Name: 'jeans',
+      size: 'XL',
+      fit: 'Slim Fit',
+      'Delivery-time': 'Same Day Delivery',
+    };
+    // let copyProduct = product;
+    // console.log(product);
+    // copyProduct.size = 'XXL';
+    // console.log(product);
+    // copyProduct.fit = 'Regular Fit';
+    // console.log(product);
+    console.log(prod['Delivery-time']);
+
+    let obj = {
+      message: 'Good Job',
+      status: 'Complete',
+    };
+    console.log(obj);
+    // De-structuring
+    let { message, status } = obj;
+    console.log(message);
+    console.log(status);
+
+    function isIdenticalProd(prod1, prod2) {
+      if (typeof prod1 !== 'object' && typeof prod2 !== 'object') {
+        console.log('parameter pass is not an object')
+        return false;
+      }
+      if (prod1 == prod2) {
+        return true;
+      }
+      if (prod1.Name === prod2.Name && prod1.size === prod2.size && prod1.fit === prod2.fit) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    let prod2 = {
+      Name: 'jeans',
+      size: 'X',
+      fit: 'Slim Fit',
+      'Delivery-time': 'Same Day Delivery',
+    };
+    let prod3 = {
+      Name: 'jeans',
+      size: 'X',
+      fit: 'Slim Fit',
+      'Delivery-time': 'Same Day Delivery',
+    };
+    console.log(isIdenticalProd(prod, ''));
+    console.log(isIdenticalProd(prod, prod));
+    console.log(isIdenticalProd(prod2, prod));
+    console.log(isIdenticalProd(prod2, prod2));
+    console.log(isIdenticalProd(prod2, prod3));
+
+  </script>
+</body>
+
+</html>
