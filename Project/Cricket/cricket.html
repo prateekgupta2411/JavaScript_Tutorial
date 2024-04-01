@@ -10,6 +10,7 @@
   <button id="batButton">Bat</button>
   <button id="ballButton">Ball</button>
   <button id="stumpButton">Stump</button>
+  <button id="resetButton">Reset</button>
   <div id="score">
     <h2>Score:</h2>
     <p>Wins: <span id="winCount">0</span></p>
@@ -18,7 +19,8 @@
   </div>
 
   <script>
-    let score = {
+    let scoreStr = localStorage.getItem('score');
+    let score = scoreStr ? JSON.parse(scoreStr) : {
       win: 0,
       lost: 0,
       tie: 0,
@@ -35,6 +37,8 @@
         score.tie++;
         document.getElementById('tieCount').textContent = score.tie;
       }
+      // Store the updated score in localStorage
+      localStorage.setItem('score', JSON.stringify(score));
     }
 
     function handleButtonClick(userChoice) {
@@ -74,6 +78,10 @@
 
     document.getElementById('stumpButton').onclick = function () {
       handleButtonClick('Stump');
+    };
+    document.getElementById('resetButton').onclick = function () {
+      localStorage.clear();
+      location.reload();
     };
   </script>
 </body>
